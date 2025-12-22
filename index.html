@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентация бренда Магнетон — 125 лет</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F9E498;
+            --dark: #0a0a0a;
+            --dark-accent: #151515;
+            --text: #ffffff;
+            --text-dim: #f0f0f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        .btn-download-all {
+            background: var(--gold);
+            color: var(--dark) !important;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .side-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .side-nav a {
+            width: 12px; height: 12px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .side-nav a.active { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+
+        section {
+            padding: 140px 10% 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #222;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(to right, #fff, var(--gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo-display {
+            background: var(--dark-accent);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo-display.light-bg { background: #f5f5f5; border: none; }
+
+        .logo-display img { 
+            width: 100%; 
+            max-width: 400px;
+            height: auto; 
+            object-fit: contain;
+        }
+
+        .description-box h3 { font-size: 28px; color: var(--gold); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .description-box p { 
+            font-size: 20px; 
+            color: var(--text-dim); 
+            margin-bottom: 20px; 
+            font-weight: 500; 
+            line-height: 1.8;
+        }
+
+        /* Стили для нового блока Торжественный */
+        .festive-main-text {
+            font-size: 24px !important;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        .festive-variants-side {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding-left: 30px;
+            border-left: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .variant-item { font-size: 19px; line-height: 1.7; color: var(--text-dim); }
+        .variant-item strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .download-group { display: flex; gap: 15px; margin-top: 20px; }
+        .btn-dl {
+            padding: 10px 25px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-dl:hover { background: var(--gold); color: var(--dark); }
+
+        .mockups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mockup-item {
+            background: var(--dark-accent);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s;
+        }
+	
+        .mockup-item:hover { transform: translateY(-10px); border-color: var(--gold); }
+
+        .mockup-img-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .mockup-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        .mockup-info {
+            padding: 25px;
+            font-size: 17px;
+            color: var(--text-dim);
+            font-weight: 500;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .large-mockup { grid-column: 1 / -1; }
+        .large-mockup .mockup-img-container { height: auto; max-height: 800px; }
+
+        .festive-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1100px) {
+            .content-grid, .festive-compare { grid-template-columns: 1fr; }
+            .festive-variants-side { border-left: none; padding-left: 0; border-top: 1px solid rgba(212,175,55,0.4); padding-top: 20px; }
+            section { padding: 120px 5% 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-weight: 700; font-size: 22px; letter-spacing: 2px;">МАГНЕТОН <span style="color: var(--gold);">125</span></div>
+        <nav>
+            <a href="#about">Описание</a>
+            <a href="#gold">Золотой</a>
+            <a href="#festive">Торжественный</a>
+            <a href="#simple">Базовый</a>
+            <a href="logos.zip" class="btn-download-all" download>Скачать ZIP-архив</a>
+        </nav>
+    </header>
+
+    <div class="side-nav">
+        <a href="#about" title="Описание" class="active"></a>
+        <a href="#gold" title="Золотой"></a>
+        <a href="#festive" title="Торжественный"></a>
+        <a href="#simple" title="Базовый"></a>
+    </div>
+
+    <!-- 1. РАЗДЕЛ: ОПИСАНИЕ -->
+    <section id="about" style="background: radial-gradient(1200px 700px at 50% 10%, rgba(212,175,55,0.15), rgba(10,10,10,0) 60%), #0a0a0a;">
+        <h2 class="section-title">Описание концепции</h2>
+        
+        <div class="content-grid">
+            <div class="description-box">
+                <h3>Единство через многообразие</h3>
+                <p>К 125-летию завода «Магнетон» разработан комплект юбилейной айдентики, состоящий из <strong>трёх ключевых вариаций</strong>.</p>
+                <p>Они отличаются уровнем торжественности, требованиями к фону и задачами применения — от официальных мероприятий до массового промышленного производства.</p>
+                <p>Юбилейный знак объединяет дату основания (1901) с современным динамичным начертанием, подчеркивая эволюцию и статус предприятия.</p>
+            </div>
+            
+            <div class="logo-display" style="background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);">
+                <img src="logo_t_gold.png" alt="Главный юбилейный символ" style="max-width: 380px; filter: drop-shadow(0 0 25px rgba(212,175,55,0.25));">
+            </div>
+        </div>
+
+        <div class="mockups-grid" style="margin-top: 20px;">
+            <div class="mockup-item">
+                <div class="mockup-info">
+                    <span style="color: var(--gold); font-weight: 800; text-transform: uppercase;">1. Юбилейное Золото</span><br>
+                    Премиальная версия с защитной обводкой — для сцен, плакатов и наградной атрибутики.
+                </div>
+            </div>
+            <div class="mockup-item">
+                <div class="mockup-info">
+                    <span style="color: var(--gold); font-weight: 800; text-transform: uppercase;">2. Торжественная Графика</span><br>
+                    Цветная и ч/б версии. Юбилейный мерч и качественная презентационная полиграфия.
+                </div>
+            </div>
+            <div class="mockup-item">
+                <div class="mockup-info">
+                    <span style="color: var(--gold); font-weight: 800; text-transform: uppercase;">3. Базовый Стандарт</span><br>
+                    Практичный логотип для повседневного использования: документы, маркировка и ручки.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. РАЗДЕЛ: ЗОЛОТОЙ ЛОГОТИП -->
+    <section id="gold">
+        <h2 class="section-title">Юбилейное Золото</h2>
+        <div class="content-grid">
+            <div class="logo-display">
+                <img src="logo_t_gold.png" alt="Золотой логотип">
+            </div>
+            <div class="description-box">
+                <h3>Премиальное воплощение</h3>
+                <p>Золотой торжественный логотип — это венец юбилейного стиля. Он символизирует незыблемость традиций, заложенных еще в 1901 году.</p>
+                <p>Ключевая особенность — <strong>золотая обводка</strong>. Она выступает защитным барьером, гарантируя читаемость на тёмно-синем фоне, фотографиях или сложных декорациях без потери контраста.</p>
+                <p><strong>Сферы применения:</strong> Юбилейный сайт, VIP-зона на мероприятиях, наградная атрибутика и обложки эксклюзивных изданий.</p>
+                <div class="download-group">
+                    <a href="logo_t_gold.png" class="btn-dl" download="Magneton125_gold.png">Скачать PNG</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mockup-item large-mockup">
+            <div class="mockup-img-container">
+                <img src="confer_gold.png" alt="Конференция">
+            </div>
+            <div class="mockup-info">Интеграция в торжественную среду: благодаря обводке логотип остается доминирующим визуальным элементом даже на темных фонах.</div>
+        </div>
+    </section>
+
+    <!-- 3. РАЗДЕЛ: ТОРЖЕСТВЕННЫЙ (ИСПРАВЛЕННЫЙ) -->
+    <section id="festive" style="background: #111;">
+        <h2 class="section-title">Торжественная Графика</h2>
+        
+        <div class="content-grid">
+            <div class="description-box">
+                <h3>Тиражная торжественность</h3>
+                <p class="festive-main-text">
+                    Эта версия — облегченная интерпретация праздничного стиля. Она лишена золотой обводки, 
+                    что делает её более подходящей для качественной полиграфии и массового производства сувениров.
+                </p>
+            </div>
+
+            <div class="festive-variants-side">
+                <div class="variant-item">
+                    <strong>Цветной вариант:</strong>
+                    Сохраняет праздничный дух, лучше всего раскрываясь на светлых или нейтральных подложках и в юбилейной сувенирной продукции.
+                </div>
+                <div class="variant-item">
+                    <strong>Ч/Б вариант:</strong>
+                    Самая стабильная версия. Идеальна для одноцветной печати, лазерной гравировки, тиснения и строгой деловой коммуникации.
+                </div>
+            </div>
+        </div>
+
+        <div class="festive-compare">
+            <div class="logo-display light-bg">
+                <img src="logo_t_color.png" alt="Цветной">
+                <div class="download-group" style="justify-content: center;">
+                    <a href="logo_t_color.png" class="btn-dl" download="Magneton125_color.png">PNG</a>
+                    <a href="logo_t_c.svg" class="btn-dl" download="Magneton125_color.svg">SVG</a>
+                </div>
+            </div>
+            <div class="logo-display light-bg">
+                <img src="logo_t.png" alt="Ч/Б">
+                <div class="download-group" style="justify-content: center;">
+                    <a href="logo_t.png" class="btn-dl" download="Magneton125_bw.png">PNG</a>
+                    <a href="logo_t.svg" class="btn-dl" download="Magneton125_bw.svg">SVG</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mockups-grid">
+            <div class="mockup-item">
+                <div class="mockup-img-container"><img src="mugs_logo_t_c.png" alt="Кружка цветная"></div>
+                <div class="mockup-info">Цветная юбилейная версия для сувенирной продукции премиум-класса.</div>
+            </div>
+            <div class="mockup-item">
+                <div class="mockup-img-container"><img src="mugs_logo_t.png" alt="Кружка чб"></div>
+                <div class="mockup-info">Графическая ч/б версия для строгой деловой сувениристики.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. РАЗДЕЛ: БАЗОВЫЙ СТАНДАРТ -->
+    <section id="simple">
+        <h2 class="section-title">Базовый Стандарт</h2>
+        <div class="content-grid">
+            <div class="description-box">
+                <h3>Утилитарность и масштаб</h3>
+                <p>Базовые версии — это «рабочие лошадки» повседневной жизни логотипа. Они очищены от праздничных излишеств ради максимальной функциональности.</p>
+                <p><strong>Вертикальный формат:</strong> Основной стандарт для документации, бланков и крупных элементов навигации.</p>
+                <p><strong>Горизонтальный формат:</strong> Разработан специально для ограниченных по высоте пространств: корпусов ручек, брендирования страниц и интерфейсов.</p>
+                
+                <div style="margin-top: 30px;">
+                    <div style="margin-bottom: 20px;">
+                        <span style="color: var(--gold); font-weight: 700; font-size: 14px; text-transform: uppercase;">Базовый:</span>
+                        <div class="download-group">
+                            <a href="logo.png" class="btn-dl" download>PNG</a>
+                            <a href="logo.svg" class="btn-dl" download>SVG</a>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="color: var(--gold); font-weight: 700; font-size: 14px; text-transform: uppercase;">Горизонтальный:</span>
+                        <div class="download-group">
+                            <a href="logo_h.png" class="btn-dl" download>PNG</a>
+                            <a href="logo_h.svg" class="btn-dl" download>SVG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logo-display light-bg" style="gap: 40px; padding: 60px;">
+                <img src="logo.png" alt="Базовый" style="max-height: 200px;">
+                <div style="width: 80%; height: 2px; background: #ddd;"></div>
+                <img src="logo_h.png" alt="Горизонтальный" style="max-height: 100px;">
+            </div>
+        </div>
+
+        <div class="mockups-grid">
+            <div class="mockup-item">
+                <div class="mockup-img-container"><img src="pen.png" alt="Ручка"></div>
+                <div class="mockup-info">Использование горизонтальной компоновки на малых форматах.</div>
+            </div>
+            <div class="mockup-item">
+                <div class="mockup-img-container"><img src="notepad.png" alt="Блокнот"></div>
+                <div class="mockup-info">Пример тиснения базовой версии на обложках блокнотов.</div>
+            </div>
+            <div class="mockup-item">
+                <div class="mockup-img-container"><img src="kalendar.png" alt="Календарь"></div>
+                <div class="mockup-info">Печать на стандартной полиграфической продукции.</div>
+            </div>
+            <div class="mockup-item">
+                <div class="mockup-img-container"><img src="page.png" alt="страница"></div>
+                <div class="mockup-info">Массовое триражирование с минимальными затратами на печать.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 60px; text-align: center; color: #666; border-top: 1px solid #222;">
+        &copy; 2025 Завод Магнетон. 125 лет на страже качества (1901–2025).
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.side-nav a');
+            sections.forEach((sec) => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 300;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+                if(top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                        let target = document.querySelector('.side-nav a[href*=' + id + ']');
+                        if(target) target.classList.add('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
